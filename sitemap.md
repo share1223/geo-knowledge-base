@@ -19,6 +19,7 @@
 | [JSON-LD 结构化数据](./docs/jsonld-guide.md) | 高 | JSON-LD, Schema.org | ✅ 已完成 |
 | [实体关系标注](./docs/entity-annotation.md) | 中 | 实体, 知识图谱 | ✅ 已完成 |
 | [FAQ 优化](./docs/faq-optimization.md) | 中 | FAQ, 自然语言 | ✅ 已完成 |
+| [Schema 完整编写指南](./docs/schema-guide.md) | 高 | Schema.org, JSON-LD, 20+ 类型, 格式案例 | ✅ 已完成 |
 
 ### 实战案例
 
