@@ -89,6 +89,22 @@
         "@type": "Answer",
         "text": "4 种品牌曝光策略：1）品牌实体一致性（统一品牌名称）2）品牌+品类绑定（每篇文章建立关联）3）品牌引用矩阵（多渠道统一曝光）4）品牌知识图谱（JSON-LD 标注）。3 个月可将 AI 引擎品牌引用率从 2% 提升到 18%。"
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Schema.org 结构化数据怎么写？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使用 JSON-LD 格式，基本结构：1）@context 固定为 https://schema.org 2）@type 指定实体类型（如 Article、FAQPage）3）填写必填字段（如 headline、datePublished）4）嵌套关联实体（如 author、publisher）。常用类型包括 Article、FAQPage、Product、Organization 等 20+ 种。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "一个页面可以有多个 JSON-LD 吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。一个页面可以包含多个 script 标签，分别标注不同的实体类型（如 WebSite + Article + BreadcrumbList + FAQPage）。也可以使用 @graph 将所有实体放在一个 JSON-LD 块中。"
+      }
     }
   ]
 }
