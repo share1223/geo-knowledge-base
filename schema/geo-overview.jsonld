@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "GEO 概述：什么是生成引擎优化？",
+  "description": "GEO（Generative Engine Optimization，生成引擎优化）是一种内容优化方法，旨在让 AI 生成引擎能够更准确地检索、理解并引用你的内容。",
+  "author": {
+    "@type": "Organization",
+    "name": "智能体知识库"
+  },
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "keywords": ["GEO", "生成引擎优化", "AI", "ChatGPT", "Gemini", "Perplexity"],
+  "articleSection": "GEO 基础",
+  "about": [
+    {
+      "@type": "DefinedTerm",
+      "name": "GEO",
+      "description": "Generative Engine Optimization，生成引擎优化"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AI 生成引擎",
+      "description": "基于大语言模型的 AI 问答系统"
+    }
+  ],
+  "mainEntity": {
+    "@type": "DefinedTerm",
+    "name": "GEO",
+    "termCode": "GEO",
+    "description": "Generative Engine Optimization，生成引擎优化，是一种面向 AI 引擎的内容优化方法",
+    "inDefinedTermSet": {
+      "@type": "DefinedTermSet",
+      "name": "GEO 知识库术语集"
+    }
+  }
+}
