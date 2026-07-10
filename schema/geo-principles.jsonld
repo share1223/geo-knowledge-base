@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "GEO 核心原则",
+  "description": "GEO 优化的十大核心原则：答案优先、结构化数据、实体关系、FAQ 覆盖、语义清晰、权威引用、内容深度、元数据规范、内部链接、持续维护。",
+  "author": {
+    "@type": "Organization",
+    "name": "智能体知识库"
+  },
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "keywords": ["GEO", "优化原则", "最佳实践", "答案优先"],
+  "articleSection": "GEO 基础"
+}
