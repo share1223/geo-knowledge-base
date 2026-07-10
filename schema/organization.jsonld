@@ -1,0 +1,36 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "智能体知识库",
+  "description": "GEO 优化的智能体知识库，为 AI 生成引擎提供结构化、可检索的知识内容",
+  "url": "https://example.com",
+  "logo": "https://example.com/assets/logo.png",
+  "sameAs": [],
+  "knowsAbout": [
+    {
+      "@type": "DefinedTerm",
+      "name": "GEO",
+      "description": "Generative Engine Optimization，生成引擎优化"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "SEO",
+      "description": "Search Engine Optimization，搜索引擎优化"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "RAG",
+      "description": "Retrieval-Augmented Generation，检索增强生成"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "知识图谱",
+      "description": "Knowledge Graph，以图结构表示实体及其关系的知识库"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "JSON-LD",
+      "description": "JavaScript Object Notation for Linked Data，用于嵌入结构化数据的 JSON 格式"
+    }
+  ]
+}
