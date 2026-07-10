@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "什么是 GEO（生成引擎优化）？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO（Generative Engine Optimization）是一种内容优化方法，旨在让 AI 生成引擎（如 ChatGPT、Gemini、Perplexity）能够更准确地检索、理解并引用你的内容。与 SEO 面向人类搜索引擎不同，GEO 面向 AI 引擎的理解和引用逻辑。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "GEO 和 SEO 有什么区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO 优化的是人类搜索引擎（如 Google、百度）的排名，关注关键词密度、外链数量、页面速度等。GEO 优化的是 AI 生成引擎的内容检索与引用，关注结构化数据、答案优先、实体关系、语义清晰性等。两者互补，GEO 是 SEO 在 AI 时代的延伸。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么需要 GEO 优化？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "越来越多用户通过 AI 引擎获取信息。如果内容未经 GEO 优化，AI 引擎可能无法准确检索或引用你的内容，导致品牌在 AI 搜索结果中缺失。GEO 确保你的内容在 AI 时代保持可见性和权威性。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如何开始 GEO 优化？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "第一步：为现有内容添加 JSON-LD 结构化数据。第二步：重写首段为答案优先格式。第三步：建立 FAQ 覆盖自然语言提问。第四步：标注实体关系并维护知识图谱。第五步：持续监测 AI 引擎的引用情况并迭代优化。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "哪些 AI 引擎支持 GEO？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "所有主流 AI 生成引擎都受益于 GEO 优化，包括 ChatGPT（GPT-4/5）、Google Gemini、Perplexity AI、Claude、Microsoft Copilot、Kimi、通义千问等。GEO 通过标准化结构化数据和清晰的内容结构，提升所有 AI 引擎对内容的理解和引用质量。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "JSON-LD 结构化数据是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JSON-LD 是一种基于 JSON 的序列化格式，用于在网页中嵌入结构化数据（Schema.org 标准）。它帮助搜索引擎和 AI 引擎理解页面内容的语义，包括文章、产品、人物、组织等实体的类型和关系。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "GEO 优化需要多长时间见效？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO 优化的效果通常在内容被 AI 引擎索引后即可体现。对于已训练完成的模型，新内容可能需要数周至数月被纳入训练数据。对于实时检索型 AI（如 Perplexity），优化后的内容在搜索引擎收录后即可被引用。"
+      }
+    }
+  ]
+}
