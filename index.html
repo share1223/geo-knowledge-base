@@ -422,6 +422,12 @@ a:hover { color: var(--green); }
       <p>明确标注内容中的实体及其关系，帮助 AI 引擎构建知识图谱。</p>
       <span class="card-tag tag-tech">技术实现</span>
     </div>
+    <div class="card fade-in" onclick="showArticle('schema-guide')">
+      <div class="card-icon">📝</div>
+      <h3>Schema 编写指南</h3>
+      <p>20+ 种 Schema 类型的完整 JSON-LD 格式案例，可直接复制使用。</p>
+      <span class="card-tag tag-tech">技术实现</span>
+    </div>
     <div class="card fade-in" onclick="showArticle('geo-from-zero')">
       <div class="card-icon">🚀</div>
       <h3>从零开始布局 GEO</h3>
@@ -601,6 +607,29 @@ const articles = {
     <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>enables</code></td><td style="padding:12px;">使能</td><td style="padding:12px;">GEO enables RAG</td></tr>
     <tr><td style="padding:12px;"><code>conflictsWith</code></td><td style="padding:12px;">冲突</td><td style="padding:12px;">方案A conflictsWith 方案B</td></tr>
     </table>`
+  },
+  'schema-guide': {
+    title: 'Schema.org 结构化数据完整编写指南',
+    content: `<p>Schema.org 是结构化数据的标准词汇表，JSON-LD 是其最常用的序列化格式。本文提供 <strong>20+ 种常用 Schema 类型</strong>的完整编写指南，每个类型都包含可直接复制使用的格式案例。</p>
+    <h3>常用 Schema 类型</h3>
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+    <tr style="border-bottom:1px solid var(--border);"><th style="padding:12px;">类型</th><th style="padding:12px;">适用场景</th><th style="padding:12px;">必填字段</th></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>Article</code></td><td style="padding:12px;">博客、新闻</td><td style="padding:12px;">headline, datePublished, author</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>FAQPage</code></td><td style="padding:12px;">常见问题</td><td style="padding:12px;">mainEntity[].name, acceptedAnswer</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>Product</code></td><td style="padding:12px;">产品页</td><td style="padding:12px;">name, offers</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>Organization</code></td><td style="padding:12px;">组织/公司</td><td style="padding:12px;">name, url</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>HowTo</code></td><td style="padding:12px;">教程</td><td style="padding:12px;">name, step[].text</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>Person</code></td><td style="padding:12px;">人物</td><td style="padding:12px;">name</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>Event</code></td><td style="padding:12px;">活动</td><td style="padding:12px;">name, startDate, location</td></tr>
+    <tr><td style="padding:12px;"><code>DefinedTerm</code></td><td style="padding:12px;">术语</td><td style="padding:12px;">name, description</td></tr>
+    </table>
+    <h3>基本结构</h3>
+    <pre style="background:var(--bg3);padding:1rem;border-radius:8px;overflow-x:auto;"><code>{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "文章标题",
+  "author": { "@type": "Person", "name": "作者" }
+}</code></pre>`
   },
   'geo-from-zero': {
     title: '从零开始布局 GEO：完整实战指南',
