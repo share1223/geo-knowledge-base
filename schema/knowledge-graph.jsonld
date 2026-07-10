@@ -55,6 +55,34 @@
       "inDefinedTermSet": "#knowledge-base"
     },
     {
+      "@id": "#brand-exposure",
+      "@type": "DefinedTerm",
+      "name": "品牌曝光",
+      "description": "通过 GEO 优化提升品牌在 AI 引擎中的提及和引用率",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#content-strategy",
+      "@type": "DefinedTerm",
+      "name": "内容策略",
+      "description": "规划、创建和优化内容的系统性方法，同时满足 GEO 和 SEO 要求",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#title-optimization",
+      "@type": "DefinedTerm",
+      "name": "标题优化",
+      "description": "为 GEO 和 SEO 双重优化选择文章标题的方法论",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#implementation-roadmap",
+      "@type": "DefinedTerm",
+      "name": "实施路线图",
+      "description": "GEO + SEO 双重优化的 90 天分阶段实施计划",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
       "@id": "#relationship-geo-seo",
       "@type": "Relationship",
       "subject": { "@id": "#geo" },
@@ -93,6 +121,46 @@
       "predicate": "benefitsFrom",
       "object": { "@id": "#geo" },
       "description": "AI 生成引擎从 GEO 优化中受益，提升内容检索和引用准确性"
+    },
+    {
+      "@id": "#relationship-geo-brand",
+      "@type": "Relationship",
+      "subject": { "@id": "#geo" },
+      "predicate": "enables",
+      "object": { "@id": "#brand-exposure" },
+      "description": "GEO 优化提升品牌在 AI 引擎中的曝光率和引用率"
+    },
+    {
+      "@id": "#relationship-content-geo",
+      "@type": "Relationship",
+      "subject": { "@id": "#content-strategy" },
+      "predicate": "partOf",
+      "object": { "@id": "#geo" },
+      "description": "内容策略是 GEO 优化的核心组成部分"
+    },
+    {
+      "@id": "#relationship-content-seo",
+      "@type": "Relationship",
+      "subject": { "@id": "#content-strategy" },
+      "predicate": "partOf",
+      "object": { "@id": "#seo" },
+      "description": "内容策略同时服务于 SEO 优化目标"
+    },
+    {
+      "@id": "#relationship-title-content",
+      "@type": "Relationship",
+      "subject": { "@id": "#title-optimization" },
+      "predicate": "partOf",
+      "object": { "@id": "#content-strategy" },
+      "description": "标题优化是内容策略的关键环节"
+    },
+    {
+      "@id": "#relationship-roadmap-geo",
+      "@type": "Relationship",
+      "subject": { "@id": "#implementation-roadmap" },
+      "predicate": "implements",
+      "object": { "@id": "#geo" },
+      "description": "实施路线图提供 GEO + SEO 双重优化的分阶段计划"
     }
   ]
 }
