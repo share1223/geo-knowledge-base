@@ -1,0 +1,11 @@
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "标题与内容策略：GEO + SEO 双重优化详解",
+  "description": "详解如何为 GEO 和 SEO 双重优化选择文章标题和内容，包含 6 种标题公式、30+ 真实案例和可直接复用的模板。",
+  "author": { "@type": "Organization", "name": "智能体知识库" },
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "keywords": ["标题优化", "内容策略", "GEO", "SEO", "品牌曝光"],
+  "articleSection": "实战案例"
+}
