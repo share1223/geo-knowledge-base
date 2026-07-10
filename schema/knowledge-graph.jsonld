@@ -1,0 +1,98 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "#geo",
+      "@type": "DefinedTerm",
+      "name": "GEO",
+      "termCode": "GEO",
+      "description": "Generative Engine Optimization，生成引擎优化",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#seo",
+      "@type": "DefinedTerm",
+      "name": "SEO",
+      "termCode": "SEO",
+      "description": "Search Engine Optimization，搜索引擎优化",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#rag",
+      "@type": "DefinedTerm",
+      "name": "RAG",
+      "termCode": "RAG",
+      "description": "Retrieval-Augmented Generation，检索增强生成",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#knowledge-graph",
+      "@type": "DefinedTerm",
+      "name": "知识图谱",
+      "description": "以图结构表示实体及其关系的知识库",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#json-ld",
+      "@type": "DefinedTerm",
+      "name": "JSON-LD",
+      "termCode": "JSON-LD",
+      "description": "JavaScript Object Notation for Linked Data",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#schema-org",
+      "@type": "DefinedTerm",
+      "name": "Schema.org",
+      "description": "结构化数据词汇表标准",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#ai-engine",
+      "@type": "DefinedTerm",
+      "name": "AI 生成引擎",
+      "description": "基于大语言模型的 AI 问答系统，如 ChatGPT、Gemini、Perplexity",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
+      "@id": "#relationship-geo-seo",
+      "@type": "Relationship",
+      "subject": { "@id": "#geo" },
+      "predicate": "relatedTo",
+      "object": { "@id": "#seo" },
+      "description": "GEO 与 SEO 互补，GEO 是 SEO 在 AI 时代的延伸"
+    },
+    {
+      "@id": "#relationship-geo-rag",
+      "@type": "Relationship",
+      "subject": { "@id": "#geo" },
+      "predicate": "enables",
+      "object": { "@id": "#rag" },
+      "description": "GEO 优化的内容提升 RAG 系统的检索质量"
+    },
+    {
+      "@id": "#relationship-jsonld-schema",
+      "@type": "Relationship",
+      "subject": { "@id": "#json-ld" },
+      "predicate": "implements",
+      "object": { "@id": "#schema-org" },
+      "description": "JSON-LD 是 Schema.org 结构化数据的序列化格式"
+    },
+    {
+      "@id": "#relationship-geo-kg",
+      "@type": "Relationship",
+      "subject": { "@id": "#geo" },
+      "predicate": "enables",
+      "object": { "@id": "#knowledge-graph" },
+      "description": "GEO 通过实体标注帮助构建知识图谱"
+    },
+    {
+      "@id": "#relationship-ai-geo",
+      "@type": "Relationship",
+      "subject": { "@id": "#ai-engine" },
+      "predicate": "benefitsFrom",
+      "object": { "@id": "#geo" },
+      "description": "AI 生成引擎从 GEO 优化中受益，提升内容检索和引用准确性"
+    }
+  ]
+}
