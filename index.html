@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO 智能体知识库 — Generative Engine Optimization</title>
+<meta name="description" content="GEO（生成引擎优化）智能体知识库，为 AI 生成引擎提供结构化、可检索的知识内容。涵盖 GEO 基础、JSON-LD、实体标注、FAQ 优化等。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a26;
+  --border: #2a2a3a;
+  --text: #e8e8f0;
+  --text2: #a0a0b8;
+  --accent: #6c5ce7;
+  --accent2: #a29bfe;
+  --green: #00cec9;
+  --orange: #fdcb6e;
+  --pink: #fd79a8;
+  --radius: 12px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: var(--accent2); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--green); }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(108,92,231,.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  animation: pulse 6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: translate(-50%,-50%) scale(1); }
+  50% { transform: translate(-50%,-50%) scale(1.2); }
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(108,92,231,.15);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  font-size: .85rem;
+  color: var(--accent2);
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text2);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+.hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all .25s;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
+
+/* Sections */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+.section-sub {
+  color: var(--text2);
+  margin-bottom: 3rem;
+  font-size: 1.05rem;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all .3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  opacity: 0;
+  transition: opacity .3s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.card:hover::before { opacity: 1; }
+.card-icon { font-size: 2rem; margin-bottom: 1rem; }
+.card h3 { font-size: 1.2rem; margin-bottom: .75rem; }
+.card p { color: var(--text2); font-size: .95rem; }
+.card-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.tag-base { background: rgba(108,92,231,.15); color: var(--accent2); }
+.tag-tech { background: rgba(0,206,201,.15); color: var(--green); }
+
+/* Principles */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.principle-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all .25s;
+}
+.principle-item:hover { border-color: var(--accent); }
+.principle-num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: .9rem;
+}
+.principle-item h4 { font-size: 1rem; margin-bottom: .25rem; }
+.principle-item p { color: var(--text2); font-size: .85rem; }
+
+/* Knowledge Graph */
+.kg-container {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.kg-node {
+  display: inline-block;
+  padding: 8px 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 6px;
+  font-size: .9rem;
+  transition: all .2s;
+}
+.kg-node:hover { border-color: var(--accent); background: rgba(108,92,231,.1); }
+.kg-rel {
+  display: block;
+  color: var(--text2);
+  font-size: .85rem;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.kg-rel:last-child { border-bottom: none; }
+
+/* FAQ */
+.faq-list { max-width: 800px; }
+.faq-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .2s;
+}
+.faq-q:hover { background: var(--bg3); }
+.faq-q::after {
+  content: '+';
+  font-size: 1.5rem;
+  color: var(--accent2);
+  transition: transform .3s;
+}
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all .35s ease;
+  color: var(--text2);
+}
+.faq-item.open .faq-a {
+  padding: 0 1.5rem 1.25rem;
+  max-height: 500px;
+}
+
+/* Nav */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(10,10,15,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo { font-weight: 700; font-size: 1.1rem; }
+.nav-logo span { color: var(--accent2); }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: var(--text2); font-size: .9rem; font-weight: 500; }
+.nav-links a:hover { color: var(--text); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--text2);
+  font-size: .9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .cards { grid-template-columns: 1fr; }
+  .principles-grid { grid-template-columns: 1fr; }
+}
+
+/* Scroll animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Update ticker */
+.ticker {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: .75rem 0;
+  overflow: hidden;
+}
+.ticker-inner {
+  display: flex;
+  gap: 3rem;
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  font-size: .85rem;
+  color: var(--text2);
+  flex-shrink: 0;
+}
+.ticker-item .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-logo"><span>GEO</span> 知识库</div>
+  <div class="nav-links">
+    <a href="#articles">文章</a>
+    <a href="#principles">原则</a>
+    <a href="#graph">知识图谱</a>
+    <a href="#faq">FAQ</a>
+    <a href="#updates">动态</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🚀 持续更新中 · 最后同步 2026-07-10</div>
+    <h1>GEO 智能体知识库</h1>
+    <p>Generative Engine Optimization — 为 AI 生成引擎打造的结构化、可检索、可引用的知识体系</p>
+    <div class="hero-buttons">
+      <a href="#articles" class="btn btn-primary">开始阅读</a>
+      <a href="#principles" class="btn btn-outline">了解 GEO 原则</a>
+    </div>
+  </div>
+</section>
+
+<!-- Update Ticker -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item"><span class="dot"></span>GEO 优化规范 v1.0 已发布</span>
+    <span class="ticker-item"><span class="dot"></span>新增 JSON-LD 结构化数据指南</span>
+    <span class="ticker-item"><span class="dot"></span>实体关系标注方法上线</span>
+    <span class="ticker-item"><span class="dot"></span>FAQ 自然语言提问覆盖策略</span>
+    <span class="ticker-item"><span class="dot"></span>知识图谱包含 7 个核心实体</span>
+    <span class="ticker-item"><span class="dot"></span>GEO 优化规范 v1.0 已发布</span>
+    <span class="ticker-item"><span class="dot"></span>新增 JSON-LD 结构化数据指南</span>
+    <span class="ticker-item"><span class="dot"></span>实体关系标注方法上线</span>
+    <span class="ticker-item"><span class="dot"></span>FAQ 自然语言提问覆盖策略</span>
+    <span class="ticker-item"><span class="dot"></span>知识图谱包含 7 个核心实体</span>
+  </div>
+</div>
+
+<!-- Articles -->
+<section class="section" id="articles">
+  <h2 class="section-title fade-in">📚 知识文章</h2>
+  <p class="section-sub fade-in">GEO 基础概念、技术实现与最佳实践</p>
+  <div class="cards">
+    <div class="card fade-in" onclick="showArticle('geo-overview')">
+      <div class="card-icon">🌐</div>
+      <h3>GEO 概述</h3>
+      <p>什么是生成引擎优化？GEO 的工作原理、适用场景与最佳实践。</p>
+      <span class="card-tag tag-base">GEO 基础</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('geo-vs-seo')">
+      <div class="card-icon">⚖️</div>
+      <h3>GEO vs SEO</h3>
+      <p>生成引擎优化与搜索引擎优化的全面对比，理解两者的异同与互补关系。</p>
+      <span class="card-tag tag-base">GEO 基础</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('geo-principles')">
+      <div class="card-icon">🎯</div>
+      <h3>GEO 核心原则</h3>
+      <p>十大核心原则：答案优先、结构化数据、实体关系、FAQ 覆盖等。</p>
+      <span class="card-tag tag-base">GEO 基础</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('jsonld-guide')">
+      <div class="card-icon">📋</div>
+      <h3>JSON-LD 指南</h3>
+      <p>如何使用 JSON-LD 结构化数据标注实体类型、属性和关系。</p>
+      <span class="card-tag tag-tech">技术实现</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('faq-optimization')">
+      <div class="card-icon">💬</div>
+      <h3>FAQ 优化</h3>
+      <p>自然语言提问覆盖策略，提高内容被 AI 引擎检索和引用的概率。</p>
+      <span class="card-tag tag-tech">技术实现</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('entity-annotation')">
+      <div class="card-icon">🔗</div>
+      <h3>实体关系标注</h3>
+      <p>明确标注内容中的实体及其关系，帮助 AI 引擎构建知识图谱。</p>
+      <span class="card-tag tag-tech">技术实现</span>
+    </div>
+  </div>
+</section>
+
+<!-- Principles -->
+<section class="section" id="principles">
+  <h2 class="section-title fade-in">🎯 GEO 十大核心原则</h2>
+  <p class="section-sub fade-in">内容优化的完整框架</p>
+  <div class="principles-grid">
+    <div class="principle-item fade-in"><div class="principle-num">1</div><div><h4>答案优先</h4><p>首段直接回答，50-150 字</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">2</div><div><h4>结构化数据</h4><p>JSON-LD 标注所有关键实体</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">3</div><div><h4>实体关系</h4><p>明确标注概念间的层级与关联</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">4</div><div><h4>FAQ 覆盖</h4><p>自然语言提问，直接回答</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">5</div><div><h4>语义清晰</h4><p>避免歧义，精确定义</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">6</div><div><h4>权威引用</h4><p>标注可验证的数据来源</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">7</div><div><h4>内容深度</h4><p>800-2000 字，覆盖定义、原理、示例</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">8</div><div><h4>元数据规范</h4><p>YAML front matter 完整填写</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">9</div><div><h4>内部链接</h4><p>每篇至少链接 3-5 篇相关文章</p></div></div>
+    <div class="principle-item fade-in"><div class="principle-num">10</div><div><h4>持续维护</h4><p>定期审查，季度更新</p></div></div>
+  </div>
+</section>
+
+<!-- Knowledge Graph -->
+<section class="section" id="graph">
+  <h2 class="section-title fade-in">🕸️ 知识图谱</h2>
+  <p class="section-sub fade-in">核心实体及其关系网络</p>
+  <div class="kg-container fade-in">
+    <div style="margin-bottom:1.5rem;">
+      <span class="kg-node">🌐 GEO</span>
+      <span class="kg-node">🔍 SEO</span>
+      <span class="kg-node">🤖 RAG</span>
+      <span class="kg-node">📋 JSON-LD</span>
+      <span class="kg-node">📐 Schema.org</span>
+      <span class="kg-node">🕸️ 知识图谱</span>
+      <span class="kg-node">💡 AI 生成引擎</span>
+    </div>
+    <div class="kg-rel">GEO <strong>relatedTo</strong> SEO — GEO 与 SEO 互补，GEO 是 SEO 在 AI 时代的延伸</div>
+    <div class="kg-rel">GEO <strong>enables</strong> RAG — GEO 优化的内容提升 RAG 系统的检索质量</div>
+    <div class="kg-rel">GEO <strong>enables</strong> 知识图谱 — GEO 通过实体标注帮助构建知识图谱</div>
+    <div class="kg-rel">JSON-LD <strong>implements</strong> Schema.org — JSON-LD 是 Schema.org 结构化数据的序列化格式</div>
+    <div class="kg-rel">AI 生成引擎 <strong>benefitsFrom</strong> GEO — AI 引擎从 GEO 优化中受益，提升内容检索和引用准确性</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <h2 class="section-title fade-in">❓ 常见问题</h2>
+  <p class="section-sub fade-in">关于 GEO 的高频问题解答</p>
+  <div class="faq-list">
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">什么是 GEO（生成引擎优化）？</div><div class="faq-a">GEO（Generative Engine Optimization）是一种内容优化方法，旨在让 AI 生成引擎（如 ChatGPT、Gemini、Perplexity）能够更准确地检索、理解并引用你的内容。与 SEO 面向人类搜索不同，GEO 面向 AI 引擎的理解逻辑。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">GEO 和 SEO 有什么区别？</div><div class="faq-a">SEO 优化的是人类搜索引擎（如 Google、百度）的排名，关注关键词密度、外链数量、页面速度等。GEO 优化的是 AI 生成引擎的内容检索与引用，关注结构化数据、答案优先、实体关系、语义清晰性等。两者互补，GEO 是 SEO 在 AI 时代的延伸。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">为什么需要 GEO 优化？</div><div class="faq-a">越来越多用户通过 AI 引擎获取信息。如果内容未经 GEO 优化，AI 引擎可能无法准确检索或引用你的内容，导致品牌在 AI 搜索结果中缺失。GEO 确保你的内容在 AI 时代保持可见性和权威性。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">如何开始 GEO 优化？</div><div class="faq-a">第一步：为现有内容添加 JSON-LD 结构化数据。第二步：重写首段为答案优先格式。第三步：建立 FAQ 覆盖自然语言提问。第四步：标注实体关系并维护知识图谱。第五步：持续监测 AI 引擎的引用情况并迭代优化。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">哪些 AI 引擎支持 GEO？</div><div class="faq-a">所有主流 AI 生成引擎都受益于 GEO 优化，包括 ChatGPT（GPT-4/5）、Google Gemini、Perplexity AI、Claude、Microsoft Copilot、Kimi、通义千问等。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">JSON-LD 结构化数据是什么？</div><div class="faq-a">JSON-LD 是一种基于 JSON 的序列化格式，用于在网页中嵌入结构化数据（Schema.org 标准）。它帮助搜索引擎和 AI 引擎理解页面内容的语义，包括文章、产品、人物、组织等实体的类型和关系。</div></div>
+    <div class="faq-item fade-in"><div class="faq-q" onclick="toggleFaq(this)">GEO 优化需要多长时间见效？</div><div class="faq-a">GEO 优化的效果通常在内容被 AI 引擎索引后即可体现。对于实时检索型 AI（如 Perplexity），优化后的内容在搜索引擎收录后即可被引用。对于训练数据，可能需要数周至数月。</div></div>
+  </div>
+</section>
+
+<!-- Updates -->
+<section class="section" id="updates">
+  <h2 class="section-title fade-in">🔄 自动更新</h2>
+  <p class="section-sub fade-in">本知识库通过定时任务自动同步最新的 GEO 资讯与技术动态</p>
+  <div class="cards">
+    <div class="card fade-in">
+      <div class="card-icon">⏰</div>
+      <h3>定时同步</h3>
+      <p>系统每日自动抓取 GEO 领域的最新资讯、技术文章和行业动态，同步更新到知识库。</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">📡</div>
+      <h3>资讯源</h3>
+      <p>监控 Google AI Blog、OpenAI Blog、Perplexity Blog、Schema.org 更新等权威来源。</p>
+    </div>
+    <div class="card fade-in">
+      <div class="card-icon">🔄</div>
+      <h3>自动更新流程</h3>
+      <p>发现新内容 → AI 提取关键信息 → 生成 GEO 优化文章 → 更新知识图谱 → 网站自动刷新。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>GEO 智能体知识库 · 持续更新中</p>
+  <p style="margin-top:.5rem;">基于 GEO 优化规范构建 · <a href="https://schema.org" target="_blank">Schema.org</a> 结构化数据</p>
+</footer>
+
+<!-- Article Modal -->
+<div id="article-modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:200; background:rgba(0,0,0,.8); overflow-y:auto; padding:2rem;">
+  <div style="max-width:800px; margin:0 auto; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:3rem; position:relative;">
+    <button onclick="closeArticle()" style="position:absolute; top:1rem; right:1.5rem; background:none; border:none; color:var(--text2); font-size:1.5rem; cursor:pointer;">✕</button>
+    <div id="article-content"></div>
+  </div>
+</div>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// FAQ toggle
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+// Article content
+const articles = {
+  'geo-overview': {
+    title: 'GEO 概述：什么是生成引擎优化？',
+    content: `<p><strong>GEO（Generative Engine Optimization，生成引擎优化）</strong>是一种内容优化方法，旨在让 AI 生成引擎（如 ChatGPT、Gemini、Perplexity）能够更准确地检索、理解并引用你的内容。与 SEO 面向人类搜索引擎不同，GEO 面向 AI 引擎的理解逻辑和引用模式。</p>
+    <h3>核心要点</h3><ul><li>GEO 优化 AI 生成引擎对内容的检索、理解和引用效率</li><li>核心方法包括：答案优先结构、JSON-LD 结构化数据、实体关系标注、FAQ 自然语言匹配</li><li>适用于产品文档、技术文档、营销内容、企业知识库等场景</li><li>GEO 与 SEO 互补，是 SEO 在 AI 时代的自然延伸</li></ul>
+    <h3>背景与趋势</h3><p>AI 生成引擎正在改变用户获取信息的方式。超过 60% 的知识工作者每周使用 AI 引擎进行研究和决策。Perplexity AI 月活跃用户超过 3000 万，ChatGPT 周活跃用户超过 4 亿。</p>
+    <h3>GEO 的工作原理</h3><p>AI 生成引擎通过训练数据、实时检索（RAG）和引用生成三个环节获取和使用内容。GEO 优化确保内容在这三个环节都能被高效利用。</p>`
+  },
+  'geo-vs-seo': {
+    title: 'GEO vs SEO：生成引擎优化与搜索引擎优化的对比',
+    content: `<p><strong>GEO 和 SEO 的核心区别在于目标对象不同</strong>：SEO 优化人类搜索引擎的排名（Google、百度等），GEO 优化 AI 引擎的内容检索和引用质量。两者互补，GEO 是 SEO 在 AI 时代的延伸。</p>
+    <h3>对比总览</h3>
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+    <tr style="border-bottom:1px solid var(--border);"><th style="padding:12px;text-align:left;">维度</th><th style="padding:12px;text-align:left;">SEO</th><th style="padding:12px;text-align:left;">GEO</th></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">目标</td><td style="padding:12px;">提高搜索引擎排名</td><td style="padding:12px;">提高 AI 引用准确率</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">目标对象</td><td style="padding:12px;">人类搜索引擎爬虫</td><td style="padding:12px;">AI 生成引擎（LLM）</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">核心指标</td><td style="padding:12px;">排名位置、点击率、流量</td><td style="padding:12px;">引用率、引用准确性</td></tr>
+    <tr><td style="padding:12px;">内容结构</td><td style="padding:12px;">关键词密度、标题标签</td><td style="padding:12px;">答案优先、语义清晰</td></tr>
+    </table>`
+  },
+  'geo-principles': {
+    title: 'GEO 核心原则',
+    content: `<p>GEO 优化的<strong>十大核心原则</strong>构成了内容优化的完整框架。</p>
+    <h3>原则列表</h3><ol><li><strong>答案优先</strong> — 首段直接回答，50-150 字</li><li><strong>结构化数据</strong> — JSON-LD 标注所有关键实体</li><li><strong>实体关系</strong> — 明确标注概念间的层级与关联</li><li><strong>FAQ 覆盖</strong> — 自然语言提问，直接回答</li><li><strong>语义清晰</strong> — 避免歧义，精确定义</li><li><strong>权威引用</strong> — 标注可验证的数据来源</li><li><strong>内容深度</strong> — 800-2000 字，覆盖定义、原理、示例</li><li><strong>元数据规范</strong> — YAML front matter 完整填写</li><li><strong>内部链接</strong> — 每篇至少链接 3-5 篇相关文章</li><li><strong>持续维护</strong> — 定期审查，季度更新</li></ol>`
+  },
+  'jsonld-guide': {
+    title: 'JSON-LD 结构化数据指南',
+    content: `<p><strong>JSON-LD（JavaScript Object Notation for Linked Data）</strong>是一种基于 JSON 的序列化格式，用于在内容中嵌入结构化数据。它是 GEO 优化的核心技术。</p>
+    <h3>常用 Schema 类型</h3>
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+    <tr style="border-bottom:1px solid var(--border);"><th style="padding:12px;">内容类型</th><th style="padding:12px;">Schema Type</th></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">文章</td><td style="padding:12px;"><code>Article</code> / <code>TechArticle</code></td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">FAQ</td><td style="padding:12px;"><code>FAQPage</code></td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">产品</td><td style="padding:12px;"><code>Product</code></td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">术语</td><td style="padding:12px;"><code>DefinedTerm</code></td></tr>
+    <tr><td style="padding:12px;">组织</td><td style="padding:12px;"><code>Organization</code></td></tr>
+    </table>`
+  },
+  'faq-optimization': {
+    title: 'FAQ 优化：自然语言提问覆盖',
+    content: `<p><strong>FAQ 优化是 GEO 的核心策略之一</strong>，通过覆盖用户可能用自然语言提出的问题，提高内容被 AI 引擎检索和引用的概率。</p>
+    <h3>编写方法</h3><ol><li><strong>收集用户真实提问</strong> — 客服记录、搜索引擎"人们也问"、社交媒体</li><li><strong>转换为自然语言</strong> — 避免技术术语，用日常语言</li><li><strong>编写答案</strong> — 首句直接回答，然后展开说明</li><li><strong>创建 JSON-LD 版本</strong> — 使用 FAQPage schema</li></ol>`
+  },
+  'entity-annotation': {
+    title: '实体关系标注指南',
+    content: `<p><strong>实体关系标注</strong>是 GEO 优化的核心环节，通过明确标注内容中的实体及其关系，帮助 AI 引擎构建知识图谱。</p>
+    <h3>关系类型</h3>
+    <table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+    <tr style="border-bottom:1px solid var(--border);"><th style="padding:12px;">关系</th><th style="padding:12px;">含义</th><th style="padding:12px;">示例</th></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>isA</code></td><td style="padding:12px;">分类</td><td style="padding:12px;">GEO isA 优化方法</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>partOf</code></td><td style="padding:12px;">组成</td><td style="padding:12px;">JSON-LD partOf 结构化数据</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>relatedTo</code></td><td style="padding:12px;">关联</td><td style="padding:12px;">GEO relatedTo SEO</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>enables</code></td><td style="padding:12px;">使能</td><td style="padding:12px;">GEO enables RAG</td></tr>
+    <tr><td style="padding:12px;"><code>conflictsWith</code></td><td style="padding:12px;">冲突</td><td style="padding:12px;">方案A conflictsWith 方案B</td></tr>
+    </table>`
+  }
+};
+
+function showArticle(id) {
+  const a = articles[id];
+  if(!a) return;
+  document.getElementById('article-content').innerHTML = '<h2 style="margin-bottom:1.5rem;font-size:1.8rem;">' + a.title + '</h2>' + a.content;
+  document.getElementById('article-modal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeArticle() {
+  document.getElementById('article-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.getElementById('article-modal').addEventListener('click', function(e) {
+  if(e.target === this) closeArticle();
+});
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape') closeArticle();
+});
+</script>
+
+<!-- JSON-LD Structured Data for the site itself -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GEO 智能体知识库",
+  "description": "GEO（生成引擎优化）智能体知识库，为 AI 生成引擎提供结构化、可检索的知识内容",
+  "url": "https://geo-knowledge-base.example.com",
+  "publisher": {
+    "@type": "Organization",
+    "name": "智能体知识库"
+  },
+  "about": [
+    {"@type": "DefinedTerm", "name": "GEO", "description": "Generative Engine Optimization"},
+    {"@type": "DefinedTerm", "name": "SEO", "description": "Search Engine Optimization"},
+    {"@type": "DefinedTerm", "name": "RAG", "description": "Retrieval-Augmented Generation"},
+    {"@type": "DefinedTerm", "name": "JSON-LD", "description": "JavaScript Object Notation for Linked Data"}
+  ]
+}
+</script>
+</body>
+</html>
