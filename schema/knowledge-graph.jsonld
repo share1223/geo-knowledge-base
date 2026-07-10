@@ -83,6 +83,13 @@
       "inDefinedTermSet": "#knowledge-base"
     },
     {
+      "@id": "#schema-writing",
+      "@type": "DefinedTerm",
+      "name": "Schema 编写",
+      "description": "使用 Schema.org 词汇表编写 JSON-LD 结构化数据的完整方法，包含 20+ 种类型的格式案例",
+      "inDefinedTermSet": "#knowledge-base"
+    },
+    {
       "@id": "#relationship-geo-seo",
       "@type": "Relationship",
       "subject": { "@id": "#geo" },
@@ -161,6 +168,14 @@
       "predicate": "implements",
       "object": { "@id": "#geo" },
       "description": "实施路线图提供 GEO + SEO 双重优化的分阶段计划"
+    },
+    {
+      "@id": "#relationship-schema-jsonld",
+      "@type": "Relationship",
+      "subject": { "@id": "#schema-writing" },
+      "predicate": "implements",
+      "object": { "@id": "#json-ld" },
+      "description": "Schema 编写使用 JSON-LD 格式实现 Schema.org 结构化数据"
     }
   ]
 }
