@@ -422,6 +422,24 @@ a:hover { color: var(--green); }
       <p>明确标注内容中的实体及其关系，帮助 AI 引擎构建知识图谱。</p>
       <span class="card-tag tag-tech">技术实现</span>
     </div>
+    <div class="card fade-in" onclick="showArticle('geo-from-zero')">
+      <div class="card-icon">🚀</div>
+      <h3>从零开始布局 GEO</h3>
+      <p>8 步完整实战指南，含品牌曝光策略、标题选择和内容规划方法。</p>
+      <span class="card-tag tag-base">实战案例</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('title-content-strategy')">
+      <div class="card-icon">✍️</div>
+      <h3>标题与内容策略</h3>
+      <p>6 种标题公式、30+ 真实案例、品牌植入技巧和 A/B 测试方法。</p>
+      <span class="card-tag tag-base">实战案例</span>
+    </div>
+    <div class="card fade-in" onclick="showArticle('geo-seo-integration')">
+      <div class="card-icon">🔄</div>
+      <h3>GEO + SEO 整合策略</h3>
+      <p>双重优化完整方案，含共享实践、冲突处理和 90 天实施路线图。</p>
+      <span class="card-tag tag-base">实战案例</span>
+    </div>
   </div>
 </section>
 
@@ -583,6 +601,29 @@ const articles = {
     <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;"><code>enables</code></td><td style="padding:12px;">使能</td><td style="padding:12px;">GEO enables RAG</td></tr>
     <tr><td style="padding:12px;"><code>conflictsWith</code></td><td style="padding:12px;">冲突</td><td style="padding:12px;">方案A conflictsWith 方案B</td></tr>
     </table>`
+  },
+  'geo-from-zero': {
+    title: '从零开始布局 GEO：完整实战指南',
+    content: `<p>本指南以一家 AI 教育公司「智学 AI」为例，展示从零开始布局 GEO 优化的<strong>8 个详细步骤</strong>，每个步骤都包含具体案例、示例代码和可执行的操作清单。</p>
+    <h3>8 个步骤</h3><ol><li><strong>品牌定位与关键词研究</strong> — 定义品牌实体、关键词研究表、品牌词库</li><li><strong>内容架构规划</strong> — 知识分类体系、URL 结构、内部链接矩阵</li><li><strong>标题选择策略</strong> — 6 种标题公式、标题检查清单、标题库</li><li><strong>内容撰写</strong> — GEO+SEO 双重优化、文章结构模板、案例示例</li><li><strong>结构化数据部署</strong> — 文章 JSON-LD、FAQ JSON-LD、面包屑导航</li><li><strong>品牌曝光策略</strong> — 品牌实体一致性、品牌+品类绑定、引用矩阵</li><li><strong>技术 SEO 基础</strong> — Sitemap、Robots.txt、页面速度优化</li><li><strong>持续优化与监测</strong> — GEO/SEO 指标、优化流程、月度报告</li></ol>
+    <h3>3 个月成果案例</h3><table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+    <tr style="border-bottom:1px solid var(--border);"><th style="padding:12px;">指标</th><th style="padding:12px;">优化前</th><th style="padding:12px;">优化后</th><th style="padding:12px;">提升</th></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">AI 引擎品牌提及率</td><td style="padding:12px;">5%</td><td style="padding:12px;">32%</td><td style="padding:12px;">+540%</td></tr>
+    <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px;">搜索引擎品牌词排名</td><td style="padding:12px;">第 8 页</td><td style="padding:12px;">第 1 页</td><td style="padding:12px;">+70 位</td></tr>
+    <tr><td style="padding:12px;">品牌搜索量</td><td style="padding:12px;">500/月</td><td style="padding:12px;">3,200/月</td><td style="padding:12px;">+540%</td></tr>
+    </table>`
+  },
+  'title-content-strategy': {
+    title: '标题与内容策略：GEO + SEO 双重优化详解',
+    content: `<p>详解如何为 GEO 和 SEO 双重优化选择标题和内容，包含<strong>6 种标题公式</strong>、<strong>30+ 真实案例</strong>和可直接复用的模板。</p>
+    <h3>6 种标题公式</h3><ol><li><strong>数字+关键词+价值承诺</strong> — AI 学习的 7 大优势：2026 年完整指南</li><li><strong>问题+直接回答</strong> — AI 怎么帮助学习？5 种实用方法详解</li><li><strong>对比+结论</strong> — AI 学习 vs 传统学习：2026 年数据对比分析</li><li><strong>品牌+品类+差异化</strong> — 智学 AI：如何用 AI 实现个性化学习</li><li><strong>教程+目标+难度</strong> — JSON-LD 教程：为网站添加结构化数据</li><li><strong>数据+洞察+行业</strong> — 2026 AI 学习行业报告：60% 用户转向 AI 学习</li></ol>
+    <h3>内容选择矩阵</h3><p>使用 5 维度评分（搜索需求、GEO 价值、品牌关联、竞争度、独特性）评估内容价值，12-15 分优先创作。</p>`
+  },
+  'geo-seo-integration': {
+    title: 'GEO + SEO 整合策略：双重优化完整方案',
+    content: `<p>GEO 和 SEO 不是二选一，而是互补关系。GEO 和 SEO<strong>共享 60% 的最佳实践</strong>，一次实现，双重收益。</p>
+    <h3>共享最佳实践</h3><ul><li>JSON-LD 结构化数据（GEO ⭐⭐⭐⭐⭐ + SEO ⭐⭐⭐⭐⭐）</li><li>高质量原创内容（GEO ⭐⭐⭐⭐⭐ + SEO ⭐⭐⭐⭐）</li><li>清晰的标题层级（GEO ⭐⭐⭐⭐ + SEO ⭐⭐⭐⭐⭐）</li><li>内部链接网络（GEO ⭐⭐⭐⭐ + SEO ⭐⭐⭐⭐⭐）</li><li>权威引用来源（GEO ⭐⭐⭐⭐⭐ + SEO ⭐⭐⭐⭐）</li></ul>
+    <h3>90 天实施路线图</h3><ul><li>第 1-30 天：基础搭建（品牌实体、内容架构、技术 SEO）</li><li>第 31-60 天：内容扩展（博客文章、FAQ、知识图谱）</li><li>第 61-90 天：效果优化（监测、迭代、报告）</li></ul>`
   }
 };
 
