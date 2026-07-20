@@ -73,5 +73,55 @@
 5. **AI 搜索指纹持久性** — 搜索引擎的用户画像正在影响 AI 答案的个性化，GEO 需要考虑个性化因素。
 
 ---
-*下次更新: 2026-07-20 09:00 CST*
+*下次更新: 2026-07-21 09:00 CST*
 *本次更新: 2026-07-19 18:38 CST*
+
+---
+
+## 2026-07-20 自动更新
+
+### 📰 Google AI Blog
+
+| 标题 | 摘要 | GEO 相关性 |
+|------|------|-----------|
+| [Connect more of your apps to Search](https://blog.google/products-and-platforms/products/search/connected-apps/) | Jul 16 — Google 允许将更多应用连接到搜索 | ⭐⭐⭐ AI 搜索与应用集成 |
+| [Celebrating 25 years of visual search innovation](https://blog.google/products-and-platforms/products/search/google-images-25th-anniversary/) | Jul 14 — 视觉搜索创新 25 周年 | ⭐⭐ 视觉搜索 |
+
+> 注：过去 24 小时内无新文章发布。上次更新的文章仍为 7 月 16 日。无新的 GEO 相关内容。
+
+### 📰 OpenAI News
+
+| 标题 | 摘要 | GEO 相关性 |
+|------|------|-----------|
+| [A scorecard for the AI age](https://openai.com/index/a-scorecard-for-the-ai-age/) | Jul 17 — AI 时代评分卡 | ⭐⭐ AI 评估标准 |
+| [Why teens deserve access to safe AI](https://openai.com/index/why-teens-deserve-access-safe-ai/) | Jul 16 — 青少年安全 AI 访问 | ⭐ AI 安全 |
+
+> 注：过去 24 小时内无新文章发布。OpenAI blog/index 路径返回 404，通过 /news/ 页面获取。
+
+### 📰 Search Engine Journal — Generative AI（新增 2 篇）
+
+| 标题 | 日期 | 摘要 | GEO 相关性 |
+|------|------|------|-----------|
+| [MCP For Marketers: What To Connect First & Why Your Data Wins](https://www.searchenginejournal.com/how-marketers-should-use-mcp-what-to-connect-how-to-make-it-work/581171/) | Jul 20（刚刚发布） | MCP（Model Context Protocol）营销指南：如何连接 AI 助手以增强营销效果 | ⭐⭐⭐⭐ MCP 协议/GEO 基础设施 |
+| [How To Measure AI Search Visibility](https://www.searchenginejournal.com/how-to-measure-ai-search-visibility/579893/) | Jul 19 | AI 可见性工具只统计引用次数，引用不是推荐。应该测量什么？ | ⭐⭐⭐ AI 搜索测量指标 |
+
+> 以下文章已在 7 月 19 日更新中收录，本次不再重复：
+> - Google Puts A Number On AI Search Clicks (Jul 18)
+> - Google Faces Class Action Over Books Used To Train Gemini (Jul 17)
+> - Google Delays Gemini 3.5 Pro Over Coding Issues (Jul 16)
+> - AI Search Cites Reddit: 5 Proven Plays (Jul 16)
+> - Google's AI Mode Now Connects To Your Apps (Jul 16)
+> - Do The Answer Engines Keep Your Fingerprint (Jul 16)
+> - Google Is Using Social Media Signals To Mask AI Search Click Loss (Jul 16)
+> - Google Brings Calendar To Personal Intelligence In AI Mode (Jul 16)
+
+### ⚠️ 未成功访问的源
+
+- **Perplexity Blog** — 连接超时（ERR_CONNECTION_TIMED_OUT）
+- **Schema.org** — 页面加载失败
+
+### 🔍 GEO 相关重点发现
+
+1. **MCP（Model Context Protocol）营销应用** — SEJ 刚刚发布了首篇面向营销人员的 MCP 指南。MCP 是连接 AI 助手与数据源的关键协议，对 GEO 策略具有基础性意义。营销人员需要优先连接自有数据源，因为「你的数据就是你的竞争优势」。
+2. **AI 搜索可见性测量方法** — 新文章指出当前 AI 可见性工具存在根本缺陷：它们只统计引用次数，但引用不等于推荐。文章建议采用更全面的测量框架，这对 GEO 效果评估至关重要。
+3. **Google AI Mode 持续扩展** — Google 继续扩展 AI Mode 的应用连接能力，从 Canva 到日历，AI 搜索正在从「信息检索」向「任务执行」演进。
